@@ -1,0 +1,7 @@
+# Edit the minys output in the Bandage program to remove any secondary pathways in the circular genomes
+
+# Import these FASTA asssemblies into Geneious.
+
+# Give each assembly the same starting point at the beginning of the gidA gene
+
+# export each assembly as FASTA (just reorganized)
