@@ -72,5 +72,5 @@ samtools index /lustre/scratch/jmanthey/23_camp1/06_bloch_bam/${SGE_TASK_ID}_fin
 -R /lustre/scratch/jmanthey/23_camp1/BX248583_floridanus.fasta \
 -I /lustre/scratch/jmanthey/23_camp1/06_bloch_bam/${SGE_TASK_ID}_final.bam \
 -ERC GVCF -O /lustre/scratch/jmanthey/23_camp1/06_bloch_bam/${SGE_TASK_ID}.g.vcf \
---QUIET -ploidy:1
+--QUIET -ploidy 1
 
