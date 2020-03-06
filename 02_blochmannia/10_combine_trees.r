@@ -1,7 +1,7 @@
 options(scipen=999)
 
 # list all the files in the trees directory
-x_files <- list.files(pattern="*tre", full.names=T)
+x_files <- list.files(pattern="*tre$", full.names=T)
 
 # trees into one file
 tree_list <- list()
