@@ -8,7 +8,7 @@
 	cluster <- "quanah"
 	
 	# define window size
-	window_size <- 25000
+	window_size <- 50000
 	
 	# interval per file definitions
 	helper5 <- scan("helper5.txt", what="character")
