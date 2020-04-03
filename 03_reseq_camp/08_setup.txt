@@ -1,0 +1,31 @@
+# create a popmap file for use with the windows calculations
+# this should have 3 columns:
+# individuals number  popname
+# should be in the order of the columns in the simplified vcf files
+# e.g.,:
+Individual	Number	PopName
+C-010	1 unk_penn
+C-036	10  modoc
+C-039	11  vicinus
+C-046	12  laevigatus
+C-049	13  herculeanus
+C-005	14  vicinus
+C-050	15  herculeanus
+C-056	16  herculeanus
+C-006	17  ocreatus
+SRX022802	18  floridanus
+SRX5650044	19  cataglyphis_niger
+C-016	2 unk_penn
+C-018	3 unk_penn
+C-019	4 modoc
+C-002	5 modoc
+C-024	6 unk_vicinus
+C-028	7 vicinus
+C-029	8 unk_vicinus
+C-003	9 laevigatus
+
+# create a file called "window_list.txt" that contains each input file from output of step 07_create_window_files (*simple.vcf)
+# put that file and the popmap (named: "window_popmap.txt") in the working directory for the 09_calc_windows.sh script
+
+# make sure both (2) R scripts are in the working directory:
+# calculate_windows.r & window_stat_calculations.r
