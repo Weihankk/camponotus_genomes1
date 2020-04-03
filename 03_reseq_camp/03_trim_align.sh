@@ -4,17 +4,17 @@
 #$ -S /bin/bash
 #$ -N bam
 #$ -q omni
-#$ -pe sm 4
+#$ -pe sm 12
 #$ -P quanah
 #$ -l h_rt=48:00:00
-#$ -l h_vmem=12G
-#$ -t 1-17
+#$ -l h_vmem=8G
+#$ -t 1-19
 
 module load intel java bwa samtools
 
 /lustre/work/jmanthey/bbmap/bbduk.sh in1=/lustre/scratch/jmanthey/23_camp1/00_fastq/${SGE_TASK_ID}_R1.fastq.gz in2=/lustre/scratch/jmanthey/23_camp1/00_fastq/${SGE_TASK_ID}_R2.fastq.gz out1=/lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R1.fastq.gz out2=/lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R2.fastq.gz minlen=50 ftl=10 qtrim=rl trimq=10 ktrim=r k=25 mink=7 ref=/lustre/work/jmanthey/bbmap/resources/adapters.fa hdist=1 tbo tpe
 
-bwa mem -t 4 /home/jmanthey/denovo_genomes/camp_sp_genome_filtered.fasta /lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R1.fastq.gz /lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R2.fastq.gz > /lustre/scratch/jmanthey/23_camp1/01_bam_files/${SGE_TASK_ID}.sam
+bwa mem -t 12 /home/jmanthey/denovo_genomes/camp_sp_genome_filtered.fasta /lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R1.fastq.gz /lustre/scratch/jmanthey/23_camp1/01_cleaned/${SGE_TASK_ID}_R2.fastq.gz > /lustre/scratch/jmanthey/23_camp1/01_bam_files/${SGE_TASK_ID}.sam
 
 samtools view -b -S -o /lustre/scratch/jmanthey/23_camp1/01_bam_files/${SGE_TASK_ID}.bam /lustre/scratch/jmanthey/23_camp1/01_bam_files/${SGE_TASK_ID}.sam
 
