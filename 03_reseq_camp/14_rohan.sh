@@ -14,7 +14,7 @@ source activate rohan
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jmanthey/anaconda2/envs/rohan/lib/
 
-/lustre/work/jmanthey/rohan/src/rohan --tstv 3.904 -t 8 -o ${SGE_TASK_ID} \
+/lustre/work/jmanthey/rohan/src/rohan --tstv 3.904 --size 50000 --auto scaffolds.txt -t 8 -o ${SGE_TASK_ID} \
 /home/jmanthey/denovo_genomes/camp_sp_genome_filtered.fasta \
 /lustre/scratch/jmanthey/23_camp1/01_bam_files/${SGE_TASK_ID}_final.bam
 
