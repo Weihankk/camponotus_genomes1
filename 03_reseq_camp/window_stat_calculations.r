@@ -29,6 +29,49 @@ heterozygosity <- function(xxx, popmap, outname, filename) {
         }
 }
 
+# helper function to identify transition variants from biallelic alleles in rows (used in titv function)
+transitions <- function(x1) {
+	a_rep <- sort(x1)
+	if(a_rep[1] == "A" & a_rep[2] == "G") {
+		return(1)
+	} else if(a_rep[1] == "C" & a_rep[2] == "T") {
+		return(1)
+	} else {
+		return(0)
+	}
+}
+
+
+
+# input is simplified vcf (entire vcf) and other files as in heterozygosity calcs, to calculate transition transversion ratio
+titv <- function(xxx, popmap, outname, filename) {
+        options(scipen=999)
+        xxx <- xxx[nchar(xxx[,2]) == 1 & nchar(xxx[,3]) == 1, ]
+        # filter to variable sites
+        xxx <- xxx[xxx[,3] != ".", ]
+        
+        # sites used for titv 
+        # total sites used same as het sites
+        a_total <- nrow(xxx)
+        a_het <- a_total
+        
+        # find number of transitions using helper function
+        total_transitions <- sum(apply(xxx[,2:3], 1, transitions))
+        # calculate transition / transversion ratio
+        titv_ratio <- total_transitions / (a_total - total_transitions)
+        
+        # output info
+        output_rep <- c("all_inds", "none", "titv", strsplit(filename, ":")[[1]][1], 
+                        as.numeric(strsplit(strsplit(filename, ":")[[1]][2], "-")[[1]][1]),
+                        as.numeric(strsplit(strsplit(filename, "-")[[1]][2], ".simple")[[1]][1]))
+        
+        output_rep <- output_rep <- c(output_rep, a_total, a_het, titv_ratio)
+        write(output_rep, file=outname, append=T, ncolumns=9, sep="\t")
+        
+}
+
+
+
 
 # input is one simplified vcfs,  
 # the popmap, and output file name
