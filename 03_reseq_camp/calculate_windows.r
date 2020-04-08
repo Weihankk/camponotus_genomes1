@@ -33,5 +33,8 @@ write(c("pop1", "pop2", "stat", "chr", "start", "end", "number_sites", "number_v
 # calculate heterozygosity for each individual
 heterozygosity(input_file, populations, output_name, filename_simple)
 
+# calculate transition / transversion ratio
+titv(input_file, populations, output_name, filename_simple)
+
 # create fasta sequence alignments for all files with a minimum number of sites
 create_fasta_from_vcf(input_file, populations, output_fasta, filename_simple, min_sites)
