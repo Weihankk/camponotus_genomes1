@@ -1,5 +1,6 @@
 library(ape)
 library(phytools)
+library(seqinr)
 
 # total number of individuals
 total_inds <- 18
@@ -20,6 +21,20 @@ for(a in 1:length(base_names)) {
 	if(a_rep %in% fastas == FALSE) { print(a) }
 }
 # none missing so continue
+# for each fasta remove the final stop codon (hyphy doesn't like them)
+for(a in 1:length(base_names)) {
+	a_rep <- read.fasta(paste(base_names[a], "_aligned_trimmed.fasta", sep=""))
+	
+	a_rep_names <- names(a_rep)
+	
+	# remove the last three bp per sequence
+	for(b in 1:length(a_rep)) {
+		a_rep[[b]] <- a_rep[[b]][1:(length(a_rep[[b]]) - 3)]
+	}
+	
+	write.fasta(a_rep, a_rep_names, file.out=paste(base_names[a], "_aligned_trimmed2.fasta", sep=""))
+}
+
 
 # loop for each tree file to annotate foreground and background for RELAX analyses
 # one file per tested lineage
@@ -303,4 +318,3 @@ for(a in 1:length(xx)) {
 	write.tree(a_tree, paste(xx[a], ".newick.vicinus", sep=""))
 	
 }
-	
