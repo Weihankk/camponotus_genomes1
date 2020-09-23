@@ -33,3 +33,7 @@ cd /lustre/scratch/jmanthey/25_camp_maker/camp_sp_genome_filtered.maker.output
 gff3_merge -s -d camp_sp_genome_filtered_master_datastore_index.log > camp_round2.all.maker.gff
 fasta_merge -d camp_sp_genome_filtered_master_datastore_index.log
 gff3_merge -s  -n -d camp_sp_genome_filtered_master_datastore_index.log > camp_round2.all.maker.noseqs.gff
+
+# extract the cds for the entire gff
+cat camp_round2.all.maker.noseqs.gff | awk '{ if ($3 == "CDS") print $0 }' > camp_round2_cds.gff
+
