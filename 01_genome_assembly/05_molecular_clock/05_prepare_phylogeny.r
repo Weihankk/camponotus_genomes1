@@ -18,4 +18,5 @@ x2 <- unroot(x2)
 write.tree(x2, file="unrooted_tree.tre")
 
 # in a text editor modified the taxa names to match those that we are using in CODEML
-# also add a #1 to the camponotus branch for the branch specific model in CODEML
+# also add a #1 to the camponotus branch for the branch specific model in CODEML for the camponotus tree
+# do the same for each additional species
