@@ -43,7 +43,7 @@ camponotus_genes <- as.character(unique(camponotus_cds[,1]))
 counter <- 1
 
 # loop for each predicted gene
-for(a in 1:length(camponotus_genes)) {
+for(a in 16827:length(camponotus_genes)) {
 	
 	# matches where the subject is the other species
 	s_lasius <- q_camponotus_s_lasius[grep(camponotus_genes[a], q_camponotus_s_lasius[,1]),]
