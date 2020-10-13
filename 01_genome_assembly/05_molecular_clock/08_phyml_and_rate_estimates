@@ -1,0 +1,17 @@
+# With the four-fold degenerate sites alignment of the four individuals, I estimated a model of sequence evolution using 
+# jModelTest
+# best model as decided by AIC = GTR + I
+
+# Here, I used an unrooted four taxon user tree for use in PhyML to estimate branch lengths using the command:
+
+phyml  -i _total_4d_sites.nex -d nt -q -m GTR -v e -u unrooted_tree.tre -o lr
+
+# user tree info in step: 05_prepare_phylogeny.r
+
+# next, to get a point estimate of the substitution rate in Camponotus, estimate the % divergence by the branch length in the tree
+# and dividing that by the mean divergence time between Camponotus and Formica
+# divergence times from input phylogeny (in millions of years): 81.1038 mya
+# calculation = camponotus_branch_length / (divergence_times * 1e6)
+# in r:
+0.1609 / ( 81.1038 * 1e6 )
+# camponotus output: 1.983877e-09 mutations / site / year
