@@ -63,3 +63,6 @@ cat header.vcf > scaffold0013.g.vcf
 grep "#" -v scaffold0013__a.g.vcf >> scaffold0013.g.vcf
 grep "#" -v scaffold0013__b.g.vcf >> scaffold0013.g.vcf
 
+# bgzip and tabix all vcf files
+for i in $( ls *vcf ); do bgzip $i; done
+for i in $( ls *vcf.gz ); do tabix $i; done
