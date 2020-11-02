@@ -41,10 +41,11 @@
 		" --recode --recode-INFO-all --out ", project_directory, "/03_vcf/${output_array}", sep="")
 	write(vcftools_total, file=a.script, append=T)
 	write("", file=a.script, append=T)
+	write(paste("bcftools query -f \'%POS\\t%REF\\t%ALT[\\t%GT]\\n \' ", project_directory, "/03_vcf/${output_array}.recode.vcf > ",
+			project_directory, "/03_vcf/${output_array}.simple.vcf", sep=""), file=a.script, append=T)
+	write("", file=a.script, append=T)
 	write(paste("bgzip ", project_directory, "/03_vcf/${output_array}.recode.vcf", sep=""), file=a.script, append=T)
 	write("", file=a.script, append=T)
 	write(paste("tabix ", project_directory, "/03_vcf/${output_array}.recode.vcf.gz", sep=""), file=a.script, append=T)
 	write("", file=a.script, append=T)
-	
-	
-		
+
