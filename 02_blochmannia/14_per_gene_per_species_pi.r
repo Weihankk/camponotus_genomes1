@@ -180,28 +180,3 @@ lines(x_windows$V1, x_windows$modoc_pi, lty=2, lwd=2)
 plot(x$coords, x$pennunk_pi, pch=19, cex=0.3, xaxt="n", xlab="", col="gray70", ylab="C. penn unk pi", ylim=c(0,0.15))
 lines(x_windows$V1, x_windows$pennunk_pi, lty=2, lwd=2)
 
-
-
-# read in diversity measures
-div <- read.table("01_heterozygosity_per_individual.txt", header=T, stringsAsFactors=F)
-
-species <- c("herculeanus", "laevigatus", "modoc", "pennunk", "vicinus", "vicinusunk")
-
-div2 <- c()
-for(a in 1:length(species)) {
-	a_rep <- x[x$species == species[a],]
-	
-	div2 <- c(div2, mean(div[div$species == species[a],4]))
-
-}
-bloch_mean_diversity <- c(sum(x$n_sites * x$herculeanus_pi) / sum(x$n_sites),
-							sum(x$n_sites * x$laevigatus_pi) / sum(x$n_sites),
-							sum(x$n_sites * x$modoc_pi) / sum(x$n_sites),
-							sum(x$n_sites * x$pennunk_pi) / sum(x$n_sites),
-							sum(x$n_sites * x$vicinus_pi) / sum(x$n_sites),
-							sum(x$n_sites * x$vicinusunk_pi) / sum(x$n_sites))
-par(mfrow=c(1,1))
-plot(div2, bloch_mean_diversity)
-abline(lm(bloch_mean_diversity ~ div2))
-summary(lm(bloch_mean_diversity ~ div2))
-
