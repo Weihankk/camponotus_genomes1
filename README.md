@@ -2,14 +2,14 @@
 Co-evolution of Camponotus and their endosymbionts
 
 ### 01 - Process to assemble the Camponotus de novo genome
-  00 - Convert the pacbio bam files
-  01 - Run Canu for initial assembly
-  02 - Several steps to run the 3d-dna pipeline for scaffolding with Hi-C data
-  02b - Run blobtools to identify and filter potential contamination
-  03 - Process to annotate repetitive and transposable elements
-  04 - Process to annotate genes
-  05 - Steps to calculate the Camponotus molecular clock
-  06 - summarize and plot genome summaries in 100 kbp windows
+    00 - Convert the pacbio bam files
+    01 - Run Canu for initial assembly
+    02 - Several steps to run the 3d-dna pipeline for scaffolding with Hi-C data
+    02b - Run blobtools to identify and filter potential contamination
+    03 - Process to annotate repetitive and transposable elements
+    04 - Process to annotate genes
+    05 - Steps to calculate the Camponotus molecular clock
+    06 - summarize and plot genome summaries in 100 kbp windows
 
 ### 02 - Assembly and analysis of Blochmannia genomes
   01 - rename files
